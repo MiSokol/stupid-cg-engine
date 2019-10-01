@@ -2,11 +2,29 @@
 #include <random>
 #include <vector>
 
-#include <iostream>
+
+const int M = 600; // Width
+const int N = 600; // Height
+
 
 int main(int argc, char *argv[]) {
+  /* SDL initialization */
+  SDL_Init(SDL_INIT_VIDEO);
+  //Creating window
+  SDL_Window *window = SDL_CreateWindow("Stupid Renderer", 100, 100, M, N, SDL_WINDOW_SHOWN);
+  //Creating render
+  SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+  SDL_RenderClear(renderer);
 
-  std::cout << "Test working." << std::endl;
 
+  //SDL_SetRenderDrawColor(renderer, red, green, blue, SDL_ALPHA_OPAQUE);
+  //SDL_RenderDrawPoint(renderer, i, j);
+
+
+  /* SDL showing & closing */
+  SDL_RenderPresent(renderer);
+  SDL_Delay(5000);
+  SDL_DestroyWindow(window);
+  SDL_Quit();
   return 0;
 }
