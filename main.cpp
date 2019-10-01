@@ -17,13 +17,20 @@ int main(int argc, char *argv[]) {
   SDL_RenderClear(renderer);
 
 
-  //SDL_SetRenderDrawColor(renderer, red, green, blue, SDL_ALPHA_OPAQUE);
-  //SDL_RenderDrawPoint(renderer, i, j);
+  for (int i = 0; i < M; i++) {
+    for (int j = 0; j < N; j++) {
+      SDL_SetRenderDrawColor(renderer, (255.0*i/M), 128, (255.0*j/N), SDL_ALPHA_OPAQUE);
+      SDL_RenderDrawPoint(renderer, i, j);
+    }
+  }
 
 
-  /* SDL showing & closing */
+  /* SDL drawing */
   SDL_RenderPresent(renderer);
   SDL_Delay(5000);
+
+  /* SDL closing */
+  SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   SDL_Quit();
   return 0;
