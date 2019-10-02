@@ -39,3 +39,10 @@ Vec3 Vec3::operator*(const double &n) const {
 double Vec3::length() const {
   return sqrt((this->x*this->x) + (this->y*this->y) + (this->z*this->z));
 }
+
+double dot(const Vec3 &a, const Vec3 &b) {
+  return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+double cos(const Vec3 &a, const Vec3 &b) {
+  return dot(a, b) / (a.length() * b.length());
+}
