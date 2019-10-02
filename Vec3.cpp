@@ -46,3 +46,20 @@ double dot(const Vec3 &a, const Vec3 &b) {
 double cos(const Vec3 &a, const Vec3 &b) {
   return dot(a, b) / (a.length() * b.length());
 }
+
+/* Color */
+Color::Color(double x, double y, double z) {
+  this->x = x / 255;
+  this->y = y / 255;
+  this->z = z / 255;
+}
+
+int Color::r() {
+  return (int)(this->x * 255);
+}
+int Color::g() {
+  return (int)(this->y * 255);
+}
+int Color::b() {
+  return (int)(this->z * 255);
+}
