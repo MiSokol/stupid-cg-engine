@@ -28,6 +28,6 @@ public:
   int r();
   int g();
   int b();
-}
+};
 
 #endif
