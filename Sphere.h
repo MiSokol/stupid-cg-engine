@@ -1,5 +1,5 @@
-#ifndef GRRAPHIC_SPHERE_H
-#define GRRAPHIC_SPHERE_H
+#ifndef GRAPHIC_SPHERE_H
+#define GRAPHIC_SPHERE_H
 
 #include "Vec3.h"
 
