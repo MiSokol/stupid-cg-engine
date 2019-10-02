@@ -7,6 +7,13 @@ Vec3::Vec3(double x, double y, double z) {
   this->z = z;
 }
 
+Vec3 Vec3::operator=(const Vec3 &v) {
+  this->x = v.x;
+  this->y = v.y;
+  this->z = v.z;
+  return v;
+}
+
 Vec3 Vec3::operator+(const Vec3 &v) const {
   return Vec3(
     this->x + v.x,
