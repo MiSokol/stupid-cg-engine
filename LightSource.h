@@ -9,6 +9,8 @@ public:
   Color color;
 
   LightSource() {};
+  LightSource(double x, double y, double z, Color c);
+  LightSource(Vec3 v, Color c);
 };
 
 #endif
