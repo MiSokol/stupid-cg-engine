@@ -2,6 +2,7 @@
 #include <random>
 #include <vector>
 
+#include "Vec3.h"
 
 const int M = 600; // Width
 const int N = 600; // Height
