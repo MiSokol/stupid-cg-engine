@@ -14,5 +14,6 @@ public:
 };
 
 Vec3 crossing (Sphere &sphere, Vec3 &vec);
+Vec3 crossing2 (Sphere &sphere, Vec3 &vec);
 
 #endif

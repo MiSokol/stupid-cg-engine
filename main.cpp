@@ -5,15 +5,17 @@
 
 #include "Vec3.h"
 #include "Sphere.h"
+#include "LightSource.h"
 
 const int M = 600; // Width
 const int N = 600; // Height
 
-
 std::vector <Sphere> spheres;
-
+std::vector <LightSource> light_sources;
 
 void addFigures() {
+  light_sources.push_back(LightSource(1, 0, 0, Color(255, 255, 255)));
+
   spheres.push_back(Sphere(0,    -1, 3,    1, Color(242,  76,  39)));
   spheres.push_back(Sphere(-2,    1, 4,    1, Color( 86, 185, 208)));
   spheres.push_back(Sphere(2,     1, 3,    1, Color(1,  255,  39)));
@@ -28,15 +30,34 @@ void renderFigures(SDL_Renderer *renderer) {
       Vec3 scr(x, y, 1);
       Color scr_clr(0, 0, 0);
 
-      Vec3 res(0, 0, 0), cur_res(0, 0, 0);
+      Vec3 res(0, 0, 0),
+           res_norm(0, 0, 0),
+           cur_res(0, 0, 0);
 
       for (Sphere i: spheres) {
         cur_res = crossing(i, scr);
         if (cur_res.length() != 0 &&
            (cur_res.length() < res.length() || res.length() == 0)) {
           res = cur_res;
+          res_norm = (i.o - res);
           scr_clr = i.color;
         }
+      }
+
+      for (LightSource i: light_sources) {
+        Vec3 source_dir = i.o - res;
+
+        // bool no_obstacles = true;
+        // for (Sphere i: spheres) {
+        //   Vec3 crs = crossing2(i, source_dir);
+        //   if (crs.length() != 0 && crs.length() > 0 && crs.length() < source_dir.length()) {
+        //     no_obstacles = false;
+        //   }
+        // }
+
+        scr_clr = Color(scr_clr.r() * cos(source_dir, res_norm),
+                        scr_clr.g() * cos(source_dir, res_norm),
+                        scr_clr.b() * cos(source_dir, res_norm));
       }
 
       SDL_SetRenderDrawColor(renderer, scr_clr.r(), scr_clr.g(), scr_clr.b(), SDL_ALPHA_OPAQUE);
