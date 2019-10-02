@@ -13,4 +13,6 @@ public:
   Sphere (Vec3 v, double r, Color c);
 };
 
+Vec3 crossing (Sphere &sphere, Vec3 &vec);
+
 #endif
