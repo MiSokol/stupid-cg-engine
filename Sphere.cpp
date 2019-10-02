@@ -23,7 +23,7 @@ Vec3 crossing (Sphere &sphere, Vec3 &vec) {
 
   if (D < 0) return Vec3(0, 0, 0);
   D = sqrt(D);
-  
+
   double ans1 = (k2 - D) / k1,
          ans2 = (k2 + D) / k1;
 
