@@ -14,7 +14,7 @@ std::vector <Sphere> spheres;
 std::vector <LightSource> light_sources;
 
 void addFigures() {
-  light_sources.push_back(LightSource(1, 0, 0, Color(255, 255, 255)));
+  light_sources.push_back(LightSource(0, 1, 0, Color(255, 255, 255)));
 
   spheres.push_back(Sphere(0,    -1, 3,    1, Color(242,  76,  39)));
   spheres.push_back(Sphere(-2,    1, 4,    1, Color( 86, 185, 208)));
@@ -55,9 +55,9 @@ void renderFigures(SDL_Renderer *renderer) {
         //   }
         // }
 
-        scr_clr = Color(scr_clr.r() * cos(source_dir, res_norm),
-                        scr_clr.g() * cos(source_dir, res_norm),
-                        scr_clr.b() * cos(source_dir, res_norm));
+        scr_clr = Color(scr_clr.r() * abs(cos(source_dir, res_norm)),
+                        scr_clr.g() * abs(cos(source_dir, res_norm)),
+                        scr_clr.b() * abs(cos(source_dir, res_norm)));
       }
 
       SDL_SetRenderDrawColor(renderer, scr_clr.r(), scr_clr.g(), scr_clr.b(), SDL_ALPHA_OPAQUE);
